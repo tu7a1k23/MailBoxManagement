@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_mailboxmanagement" default="compile.module.mailboxmanagement">
+  <dirname property="module.mailboxmanagement.basedir" file="${ant.file.module_mailboxmanagement}"/>
+  
+  <property name="module.jdk.home.mailboxmanagement" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.mailboxmanagement" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.mailboxmanagement" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.mailboxmanagement" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="mailboxmanagement.output.dir" value="${module.mailboxmanagement.basedir}/../../out/production/MailBoxManagement"/>
+  <property name="mailboxmanagement.testoutput.dir" value="${module.mailboxmanagement.basedir}/../../out/test/MailBoxManagement"/>
+  
+  <path id="mailboxmanagement.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="mailboxmanagement.module.production.classpath">
+    <path refid="${module.jdk.classpath.mailboxmanagement}"/>
+  </path>
+  
+  <path id="mailboxmanagement.runtime.production.module.classpath">
+    <pathelement location="${mailboxmanagement.output.dir}"/>
+  </path>
+  
+  <path id="mailboxmanagement.module.classpath">
+    <path refid="${module.jdk.classpath.mailboxmanagement}"/>
+    <pathelement location="${mailboxmanagement.output.dir}"/>
+  </path>
+  
+  <path id="mailboxmanagement.runtime.module.classpath">
+    <pathelement location="${mailboxmanagement.testoutput.dir}"/>
+    <pathelement location="${mailboxmanagement.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.mailboxmanagement">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.mailboxmanagement">
+    <patternset refid="excluded.from.module.mailboxmanagement"/>
+  </patternset>
+  
+  
+  <target name="compile.module.mailboxmanagement" depends="compile.module.mailboxmanagement.production,compile.module.mailboxmanagement.tests" description="Compile module MailBoxManagement"/>
+  
+  <target name="compile.module.mailboxmanagement.production" depends="register.custom.compilers" description="Compile module MailBoxManagement; production classes"/>
+  
+  <target name="compile.module.mailboxmanagement.tests" depends="register.custom.compilers,compile.module.mailboxmanagement.production" description="compile module MailBoxManagement; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.mailboxmanagement" description="cleanup module">
+    <delete dir="${mailboxmanagement.output.dir}"/>
+    <delete dir="${mailboxmanagement.testoutput.dir}"/>
+  </target>
+</project>

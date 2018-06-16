@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Mail Box Management</string>
+    <string name="sign_in">Sign in</string>
+    <string name="log_in">sign in</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="compose">Write new message</string>
+    <string name="to">To</string>
+    <string name="subject">Subject</string>
+    <string name="send">Send</string>
+    <string name="compose_your_message">Compose your message</string>
+    <string name="from">From</string>
+    <string name="message">Message</string>
+    <string name="refresh">Refresh inbox</string>
+    <string name="just_an_icon">just an icon</string>
+</resources>
