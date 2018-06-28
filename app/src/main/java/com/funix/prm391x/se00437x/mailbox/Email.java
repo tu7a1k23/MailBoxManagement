@@ -13,13 +13,14 @@ import javax.mail.Part;
 import javax.mail.internet.InternetAddress;
 
 class Email {
+    //Set pattern for date format
     private static final SimpleDateFormat FORMAT =
             new SimpleDateFormat("dd/MMM", Locale.US);
 
-    private InternetAddress fromAddress;
-    private String subject;
-    private String receivedDate;
-    private int messageNumber;
+    private InternetAddress fromAddress; //the sender information
+    private String subject; //the subject of mail received
+    private String receivedDate;    //date of received day
+    private int messageNumber; //mark the message number to load 10 first mail when opening mail box and...
 
     Email(Message message) throws MessagingException {
         this.fromAddress = (InternetAddress) message.getFrom()[0];
@@ -31,7 +32,7 @@ class Email {
     @Nullable
     static String getText(Part p) throws
             MessagingException, IOException {
-        if (p.isMimeType("text/*")) {
+        if (p.isMimeType("text/*")) { //Test the text type of content to return
             return (String) p.getContent();
         }
 

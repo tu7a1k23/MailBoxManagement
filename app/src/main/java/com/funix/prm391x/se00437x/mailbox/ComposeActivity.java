@@ -21,11 +21,11 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class ComposeActivity extends AppCompatActivity {
-    private Context mContext = this;
-    private EditText mEdtTo;
-    private EditText mEdtSubject;
-    private EditText mEdtMessage;
-    private ProgressDialog mProgressDialog;
+    private Context mContext = this; //context of app: activity or service...
+    private EditText mEdtTo;   // the receiver is received your email
+    private EditText mEdtSubject;   // the subject of the mail you want to send
+    private EditText mEdtMessage;   // the content of the mail
+    private ProgressDialog mProgressDialog; //create progress thing to show up when pending to load new activity.
     private String mEmail;
     private String mPassword;
     private String mTo;
@@ -36,7 +36,7 @@ public class ComposeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose);
-        setTitle("Compose");
+        setTitle("Compose");    //Title show on top of the interface.
 
         mEdtTo = (EditText) findViewById(R.id.edt_from);
         mEdtSubject = (EditText) findViewById(R.id.edt_subject);
@@ -65,7 +65,7 @@ public class ComposeActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    //Send Email activity
     private void sendEmail() {
         mTo = mEdtTo.getText().toString();
         mSubject = mEdtSubject.getText().toString();
@@ -82,7 +82,7 @@ public class ComposeActivity extends AppCompatActivity {
         }
 
         @Override
-        protected Boolean doInBackground(Void... params) {
+        protected Boolean doInBackground(Void... params) { // Service loading
             //Get properties object
             Properties props = new Properties();
             props.put("mail.smtp.ssl.enable", "true");
@@ -110,6 +110,7 @@ public class ComposeActivity extends AppCompatActivity {
         protected void onPostExecute(Boolean isSuccessful) {
             super.onPostExecute(isSuccessful);
             mProgressDialog.dismiss();
+            //Show the result of sending message
             Toast.makeText(mContext, (isSuccessful ? "Message sent" : "Failed to send email"),
                     Toast.LENGTH_SHORT).show();
         }

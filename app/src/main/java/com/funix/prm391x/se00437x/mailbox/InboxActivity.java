@@ -36,16 +36,16 @@ import javax.mail.Session;
 import javax.mail.Store;
 
 public class InboxActivity extends AppCompatActivity {
-    private Context mCtx = this;
-    private ProgressDialog mProgressDialog;
-    private String mEmail;
-    private String mPassword;
-    private ArrayList<Email> mMessages = new ArrayList<>();
-    private ListView mMailList;
-    private CustomAdapter mCustomAdapter;
-    private LayoutInflater mInflater;
-    private Button mBtnMoreMessage;
-    private int mLoadedCount = 0;
+    private Context mCtx = this;    //context of app: activity or service...
+    private ProgressDialog mProgressDialog; //create progress thing to show up when pending to load new activity.
+    private String mEmail;  //user for login
+    private String mPassword; //password for login
+    private ArrayList<Email> mMessages = new ArrayList<>(); //the amount of mail/message
+    private ListView mMailList; //ListView to load each of mail message in inbox
+    private CustomAdapter mCustomAdapter; //help ListView to get data
+    private LayoutInflater mInflater; //convert file XML into view.
+    private Button mBtnMoreMessage; //button to load more messages
+    private int mLoadedCount = 0; //the amount of message have been loaded
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +56,12 @@ public class InboxActivity extends AppCompatActivity {
 
         // get email and password from previous activity
         Intent intent = getIntent();
-        mEmail = intent.getStringExtra(Key.EMAIL);
-        mPassword = intent.getStringExtra(Key.PASSWORD);
+        mEmail = intent.getStringExtra(Key.EMAIL); //take out the key presents for EMAIL in Key class
+        mPassword = intent.getStringExtra(Key.PASSWORD); ////take out the key presents for PASSWORD in Key class
 
-        setUpMailList();
-        addFooterToMailList();
-        setMailListItemClick();
+        setUpMailList();    //set up the message list
+        addFooterToMailList();  // footer show the message left and button to load left messages.
+        setMailListItemClick(); //set information to your clicked item in mail list
 
         // fetch email
         new MailFetcher().execute();

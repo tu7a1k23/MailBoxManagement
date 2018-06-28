@@ -22,17 +22,17 @@ import javax.mail.Store;
 
 public class ReadActivity extends AppCompatActivity {
     private Context mContext = this;
-    private TextView mTxvFrom;
-    private TextView mTxvSubject;
-    private WebView mTxvContent;
-    private ProgressDialog mProgressDialog;
-    private String mEmail;
-    private String mPassword;
-    private String mFrom;
-    private String mReplyTo;
-    private String mSubject;
-    private int mMessageNo;
-    private String mContent;
+    private TextView mTxvFrom;  //From info typed in
+    private TextView mTxvSubject;  //Subject info typed in
+    private WebView mTxvContent;    //show up the content of mail
+    private ProgressDialog mProgressDialog; //show up the progress dialog when loading
+    private String mEmail;  // user of your account
+    private String mPassword;   // password of your account
+    private String mFrom;   // from info of mail
+    private String mReplyTo;    //reply to info of mail
+    private String mSubject;    //subject info of mail
+    private int mMessageNo;     //the index of message
+    private String mContent;    //content of a message comprise...
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
